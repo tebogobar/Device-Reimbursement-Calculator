@@ -1,0 +1,42 @@
+version: '3'
+services:
+  device-reimbursement-calculator:
+    image: device-reimbursement-calculator
+    container_name: device-reimbursement-calculator
+    ports:
+      - "8088:8088"
+    networks:
+      - payments_network
+  device-reimbursement-calculator-ui:
+    image: device-reimbursement-calculator-ui
+    container_name: device-reimbursement-calculator-ui
+    ports:
+      - "3000:3000"
+    networks:
+      - payments_network
+  mtn-administration-server:
+    image: mtn-administration-server
+    container_name: mtn-administration-server
+    ports:
+      - "8081:8081"
+    networks:
+      - payments_network
+  chatsurge-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: nimda
+    networks:
+      - payments_network
+  chatsurge-pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: tebogobar@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - payments_network
+networks:
+  payments_network:
