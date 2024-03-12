@@ -9,11 +9,12 @@ import za.co.mtn.devicereimbursementcalculator.model.RepaymentResponse;
 
 @Service
 public class DeviceCalculatorService {
-
+	
+	private double interestRate = 6.5;
+	private int[] periods = {12, 24, 36};
+	
 	public RepaymentResponse calculatePayment(BigDecimal deviceAmount) {
 		
-		double interestRate = 6.5;
-        int[] periods = {12, 24, 36};
         RepaymentResponse response = new RepaymentResponse();
 
         for (int period : periods) {

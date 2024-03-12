@@ -22,6 +22,7 @@ import za.co.mtn.devicereimbursementcalculator.service.DeviceCalculatorService;
 public class DeviceCalculatorController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DeviceCalculatorController.class);
+	
 	@Autowired private DeviceCalculatorService deviceCalculatorService;
 	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value = "/{value}", method = RequestMethod.GET, produces = "application/json")
